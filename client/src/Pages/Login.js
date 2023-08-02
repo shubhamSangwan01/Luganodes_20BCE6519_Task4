@@ -53,10 +53,10 @@ const Login = ({login,setLogin}) => {
               <img src="/images/google.png" alt="Google" onClick={console.log("google")} />
             </li>
             <li id="apple">
-              <img src="/images/apple.png" alt="Google" onClick={console.log("google")} />
+              <img src="/images/apple.png" alt="Apple" onClick={console.log("apple")} />
             </li>
             <li id="facebook">
-              <img src="/images/facebook.png" alt="Google" onClick={console.log("google")} />
+              <img src="/images/facebook.png" alt="Facebook" onClick={console.log("facebook")} />
             </li>
           </ul>
         </li>

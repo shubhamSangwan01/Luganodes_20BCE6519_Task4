@@ -11,10 +11,6 @@ body {
   font-weight: bolder;
 }
 
-button {
-  width: 80px;
-  margin: 10px 10px 0 0;
-}
 form {
   padding: 20px;
   margin: 100px auto;
@@ -123,6 +119,7 @@ input:focus {
   align-self: end;
   font-size: small;
   padding: 7px 0px;
+  font-weight: 400;
 }
 #loginForm__signIn {
   width: 100%;
@@ -151,7 +148,36 @@ input:focus {
   justify-content: center;
 }
 #loginForm__line__li > span {
-  font-size: 10px;
-  color: #acadac;
-  font-family: "Inter", sans-serif;
+  font-size: small;
+  font-weight: 400;
+  padding: 0 0.5rem;
+}
+.loginForm__buttons__list > li > img {
+  height: 13.35px;
+  width: 12.9px;
+}
+
+.loginForm__buttons__list {
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+.loginForm__buttons__list > li {
+  padding: 3px;
+  width: 52.65px;
+  height: 27px;
+  border-radius: 8px;
+  background-color: ghostwhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#google:hover,
+#facebook:hover,
+#apple:hover {
+  box-shadow: 0px 3px 10px 6px rgb(0 0 0 / 0.2);
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 }
