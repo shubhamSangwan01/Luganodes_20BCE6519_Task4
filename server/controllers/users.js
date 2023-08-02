@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
 import bcrypt from 'bcryptjs'
+import Eth from '../models/eth.js'
 
 
 export const createUser= async (req,res)=>{
@@ -15,7 +16,7 @@ export const createUser= async (req,res)=>{
             name,
             email,
             password
-        })
+        });
     //hash password
     const salt =await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(newUser.password,salt)
@@ -69,6 +70,7 @@ export const loginUser = async (req,res)=>{
 }
 export const view = async (req,res)=>{
     const email = req.email
+    console.log(req.email)
     const user = await User.findOne({email:email})
     if(!user){
         res.send({message:"User not found!"})
@@ -91,4 +93,41 @@ export const updateUserDetails=async(req,res)=>{
     await User.findOneAndUpdate({email:email},updatedUser)
     .then(()=>res.send({message:"User Updated Successfully"}))
     .catch((err)=>console.log(err))
+}
+
+export const addMetaUser = async(req,res)=>{
+    const {account} = req.body;
+  
+    const eth =await Eth.findOne({metaId:account});
+    if(eth!==null){
+        res.status(200).json({message:"login successfuly"})
+    }
+    else{
+        await Eth.create({metaId:account});
+        res.status(202).json({message:"login successfully"})
+    }
+}
+
+export const updateMetaUser = async(req,res)=>{
+    const {name,age,metaId,gender,mobile} = req.body;
+    console.log(req.body)
+    const eth =await Eth.findOne({metaId});
+
+    if(eth){
+        await Eth.updateOne({metaId},{name,age,gender,mobile});
+        res.status(200).json({message:"Information Updated successfully!"})
+    }
+    
+}
+
+export const getMetaUserDetails = async(req,res)=>{
+    const {metaId} = req.body;
+
+    try {
+        const metaUser = await Eth.findOne({metaId});
+        res.status(200).json({metaUser})
+        
+    } catch (error) {
+        console.log(error)
+    }
 }

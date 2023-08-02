@@ -1,0 +1,92 @@
+/* .btn {
+  margin-top: 20px;
+}
+body {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  font-weight: bolder;
+}
+body::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  height: 100%;
+  width: 100%;
+  background-image: url("https://images.hdqwalls.com/wallpapers/cowboy-retrowave-4k-2t.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0.8;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+button {
+  width: 80px;
+  margin: 10px 10px 0 0;
+}
+form {
+  padding: 20px;
+  border: 3px solid black;
+  margin: auto auto;
+}
+.card {
+  width: 50%;
+  display: flex;
+  background: inherit;
+  flex-direction: column;
+  border: 3px solid black;
+  align-content: center;
+  margin: auto auto;
+}
+@media (max-width: 990px) {
+  .card {
+    width: 100%;
+  }
+}
+
+.card-header {
+  height: 30%;
+
+  color: white;
+  text-align: center;
+}
+
+.card-header p {
+  font-size: 2rem;
+}
+
+.container {
+  padding: 4px 16px;
+  color: aliceblue;
+  font-weight: bolder;
+}
+
+.btn1 {
+  padding: 9px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.card:hover.card::before {
+  content: "";
+  background: url("https://cdn.wallpapersafari.com/77/46/R6iPAc.jpg");
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */

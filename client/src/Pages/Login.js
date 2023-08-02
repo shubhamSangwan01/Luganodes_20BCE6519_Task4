@@ -4,10 +4,12 @@ import '../styles/login.css'
 import { BrowserProvider } from 'ethers';
 import {ToastContainer ,toast} from 'react-toastify'
 import axios from 'axios'
+import Web3 from 'web3'
 
 const Login = ({formType,setFormType}) => {
 
-  const provider = new BrowserProvider(window.ethereum);
+
+
   const navigate = useNavigate()
   const [login,setlogin] = React.useState({
     email:"",
@@ -19,6 +21,50 @@ const Login = ({formType,setFormType}) => {
     password:"",
     confirmPassword:""
   })
+  const [isConnected, setIsConnected] = React.useState(false);
+  const [ethBalance, setEthBalance] = React.useState("");
+  
+  const detectCurrentProvider = () => {
+    let provider;
+    if (window.ethereum) {
+      provider = window.ethereum;
+    } else if (window.web3) {
+      provider = window.web3.currentProvider;
+    } else {
+      console.log("Non-ethereum browser detected. You should install Metamask");
+    }
+    return provider;
+  };
+  
+  const onConnect = async() => {
+    try {
+      const currentProvider = detectCurrentProvider();
+      if(currentProvider) {
+        await currentProvider.request({method: 'eth_requestAccounts'});
+        const web3 = new Web3(currentProvider);
+        const userAccount  =await web3.eth.getAccounts();
+        console.log(web3.eth,userAccount)
+        const account = userAccount[0];
+        console.log(account)
+        let ethBalance = await web3.eth.getBalance(account);
+        setEthBalance(ethBalance);
+        sessionStorage.setItem("UserMetaMaskId",account);
+       const res = await axios.post('http://localhost:5000/eth',{account});
+
+       if(res.status===202 || res.status===200){
+        alert(res.data.message)
+        setTimeout(()=>navigate('/dashboard'),2000)
+       }
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
+  
+  const onDisconnect = () => {
+    setIsConnected(false);
+  }
+  
   const handleLoginChange =(e)=>{
     const {name,value} = e.target
    
@@ -69,7 +115,7 @@ const Login = ({formType,setFormType}) => {
     if(!signup.name || !signup.email || !signup.password || !signup.confirmPassword){
       alert("Enter full details")
     }
-    else if(signup.password!=signup.confirmPassword){
+    else if(signup.password!==signup.confirmPassword){
       alert("Passwords Dont Match")
     }
     else if(signup.password.length < 6){
@@ -89,15 +135,8 @@ const Login = ({formType,setFormType}) => {
 }
 }
 
-const connectWallet = async()=>{
-  provider.send('eth_requestAccounts', [])
-    .catch(() => console.log('user rejected request'));
-
-}
-
   return (
  <div className='container'>
-  {/* <ToastContainer/> */}
   <div class="navBar_container">
     <div class="navBar">
       <ul>
@@ -109,7 +148,7 @@ const connectWallet = async()=>{
       </ul>
     </div>
   </div>
-  {formType == "login" && (
+  {formType === "login"  &&  (
     <form style={{height:'fitContent',width:300}} onSubmit={handleLogin}>
     <h1>User Login</h1>
       <ul className="loginForm__list">
@@ -135,9 +174,13 @@ const connectWallet = async()=>{
               <li id="google">
                 <img src="/images/google.png" alt="Google" onClick={console.log("google")} />
               </li>
-              <li id="apple">
-                <img src="/images/apple.png" alt="Apple" onClick={console.log("apple")} />
-              </li>
+              {!isConnected &&  <li id="apple">
+              <div>
+            <button type="button" className="app-button__login" onClick={onConnect}>
+            Login
+            </button>
+          </div>
+              </li>}
               <li id="facebook">
                 <img src="/images/facebook.png" alt="Facebook" onClick={console.log("facebook")} />
               </li>
@@ -146,7 +189,7 @@ const connectWallet = async()=>{
       </ul>
     </form>
   )}
-  {formType == "signup" && (
+  {formType === "signup"  && (
     <form style={{height:'fitContent',width:300}} onSubmit={handleSignup}>
     <h1>User Sign Up</h1>
       <ul className="loginForm__list">
@@ -175,9 +218,7 @@ const connectWallet = async()=>{
               <li id="google">
                 <img src="/images/google.png" alt="Google" onClick={console.log("google")} />
               </li>
-              <li id="apple">
-                <img src="/images/apple.png" alt="Apple" onClick={console.log("apple")} />
-              </li>
+              
               <li id="facebook">
                 <img src="/images/facebook.png" alt="Facebook" onClick={console.log("facebook")} />
               </li>
