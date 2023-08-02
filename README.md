@@ -8,4 +8,5 @@ git clone https://github.com/shubhamSangwan01/Luganodes_20BCE6519_Task4
 cd client/ cd server (parallelly in different terminals)
 <br/>
 npm install
+<br/>
 npm start
