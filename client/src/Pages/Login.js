@@ -45,7 +45,7 @@ const Login = ({ formType, setFormType }) => {
         setEthBalance(ethBalance);
         sessionStorage.setItem("UserMetaMaskId", account);
         const res = await axios.post(
-          "luganodes20bce6519task4-production.up.railway.app/eth",
+          "https://luganodes20bce6519task4-production.up.railway.app/eth",
           { account }
         );
 
@@ -88,7 +88,7 @@ const Login = ({ formType, setFormType }) => {
     }
     try {
       axios
-        .post("luganodes20bce6519task4-production.up.railway.app/login", {
+        .post("https://luganodes20bce6519task4-production.up.railway.app/login", {
           user: login,
         })
         .then((response) => {
@@ -128,7 +128,7 @@ const Login = ({ formType, setFormType }) => {
 
       await axios
         .post(
-          "luganodes20bce6519task4-production.up.railway.app/register",
+          "https://luganodes20bce6519task4-production.up.railway.app/register",
           newUser
         )
         .then((response) => {
@@ -193,9 +193,10 @@ const Login = ({ formType, setFormType }) => {
                 placeholder="Enter Password"
               />
             </li>
+            <Link to='/forget'>
             <li id="loginForm__resetPassword">
               <span>Reset Password ?</span>
-            </li>
+            </li></Link>
             <li id="loginForm__signIn">
               <button type="submit">Sign In</button>
             </li>

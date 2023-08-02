@@ -229,3 +229,15 @@ input:focus {
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
+#root > div > div > form > ul > a {
+  text-decoration: none;
+  margin-top: 0.01rem;
+  align-self: end;
+  font-size: small;
+  padding: 7px 0px;
+  font-weight: 400;
+  cursor: pointer;
+  color: white;
+  margin-left: auto;
+  width: 100%;
+}

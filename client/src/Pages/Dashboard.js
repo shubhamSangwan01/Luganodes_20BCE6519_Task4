@@ -25,7 +25,7 @@ const Dashboard = ({ login, setLogin }) => {
     e.preventDefault();
     if (eth) {
       const res = await axios.post(
-        "luganodes20bce6519task4-production.up.railway.app/updateMetaUser",
+        "https://luganodes20bce6519task4-production.up.railway.app/updateMetaUser",
         { ...userData, metaId: eth }
       );
       if (res.status == 200) {
@@ -35,7 +35,7 @@ const Dashboard = ({ login, setLogin }) => {
       userData.updated = true;
       const newUser = userData;
       const res = await axios.post(
-        "luganodes20bce6519task4-production.up.railway.app/addUserDetails",
+        "https://luganodes20bce6519task4-production.up.railway.app/addUserDetails",
         newUser,
         {
           headers: {
@@ -71,7 +71,7 @@ const Dashboard = ({ login, setLogin }) => {
   });
   const displayInfo = async (user) => {
     const res = await axios.get(
-      "luganodes20bce6519task4-production.up.railway.app/view",
+      "https://luganodes20bce6519task4-production.up.railway.app/view",
       {
         headers: {
           "x-access-token": localStorage.getItem("token"),
@@ -102,7 +102,7 @@ const Dashboard = ({ login, setLogin }) => {
         setEth(ethId);
         axios
           .post(
-            "luganodes20bce6519task4-production.up.railway.app/getMetaUser",
+            "https://luganodes20bce6519task4-production.up.railway.app/getMetaUser",
             { metaId: ethId }
           )
           .then((res) => {

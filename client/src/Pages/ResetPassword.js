@@ -16,7 +16,7 @@ const ResetPassword = () => {
     } else {
       console.log(password);
       const res = await axios.post(
-        "luganodes20bce6519task4-production.up.railway.app/resetPassword",
+        "https://luganodes20bce6519task4-production.up.railway.app/resetPassword",
         { token, password }
       );
       if (res.status == 200) {

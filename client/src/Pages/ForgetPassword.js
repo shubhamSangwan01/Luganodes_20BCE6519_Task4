@@ -6,7 +6,7 @@ const ForgetPassword = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      "luganodes20bce6519task4-production.up.railway.app/forgetpassword",
+      "https://luganodes20bce6519task4-production.up.railway.app/forgetpassword",
       { email }
     );
 
