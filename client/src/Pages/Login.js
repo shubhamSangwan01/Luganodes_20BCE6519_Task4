@@ -174,12 +174,11 @@ const Login = ({formType,setFormType}) => {
               <li id="google">
                 <img src="/images/google.png" alt="Google" onClick={console.log("google")} />
               </li>
-              {!isConnected &&  <li id="apple">
-              <div>
-            <button type="button" className="app-button__login" onClick={onConnect}>
-            Login
-            </button>
-          </div>
+              {!isConnected &&  <li id="metamask">
+                <img src="/images/metamask.png" alt="metamask" onClick={onConnect} />
+                {/* <button type="button" className="app-button__login" onClick={onConnect}>
+                Login
+                </button> */}
               </li>}
               <li id="facebook">
                 <img src="/images/facebook.png" alt="Facebook" onClick={console.log("facebook")} />

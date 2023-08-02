@@ -47,6 +47,7 @@ body {
   font-weight: 600;
   background-color: rgb(190 30 46);
   color: white;
+  cursor: pointer;
 }
 
 /* form styling */
@@ -58,6 +59,7 @@ form {
 }
 form h1 {
   font-weight: 600;
+  font-size: 2rem;
 }
 
 .card {
@@ -163,6 +165,7 @@ input:focus {
   font-size: small;
   padding: 7px 0px;
   font-weight: 400;
+  cursor: pointer;
 }
 #loginForm__signIn {
   width: 100%;
@@ -178,6 +181,7 @@ input:focus {
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
+  cursor: pointer;
 }
 .loginForm__line {
   height: 0.2px;
@@ -196,8 +200,8 @@ input:focus {
   padding: 0 0.5rem;
 }
 .loginForm__buttons__list > li > img {
-  height: 13.35px;
-  width: 12.9px;
+  height: 1rem;
+  width: 1rem;
 }
 
 .loginForm__buttons__list {
@@ -216,9 +220,10 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 #google:hover,
-#facebook:hover,
+#metamask:hover,
 #apple:hover {
   box-shadow: 0px 3px 10px 6px rgb(0 0 0 / 0.2);
   transition-duration: 0.3s;

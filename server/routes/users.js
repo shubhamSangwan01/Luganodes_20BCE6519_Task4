@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 import jwt from 'jsonwebtoken'
-import {view,createUser,loginUser,addUserDetails,updateUserDetails, addMetaUser, updateMetaUser, getMetaUserDetails} from '../controllers/users.js'
+import {view,createUser,loginUser,addUserDetails,updateUserDetails, addMetaUser, updateMetaUser, getMetaUserDetails, forgetPassword, resetPassword} from '../controllers/users.js'
 
 
 const verifyToken = (req, res, next) => {
@@ -30,6 +30,6 @@ router.post('/eth',addMetaUser)
 router.post('/getMetaUser',getMetaUserDetails)
 router.post('/updateMetaUser',updateMetaUser)
 router.patch('/update',verifyToken,updateUserDetails)
-
-
+router.post('/forgetpassword',forgetPassword)
+router.post('/resetPassword',resetPassword)
 export default router

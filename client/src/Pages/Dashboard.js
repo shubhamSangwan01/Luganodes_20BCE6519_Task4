@@ -135,16 +135,22 @@ useEffect(()=>{
             <p> Your Details</p>
           </div>
           <div className="container">
-            <strong>Age: </strong>
-            <span>{userData.age}</span>
+            <div className='container_item'>
+                <strong>Age: </strong>
+                <span>{userData.age}</span>
+            </div>
             <br/>
             <br/>
-            <strong>Gender: </strong>
-            <span>{userData.gender}</span>
+            <div className='container_item'>
+                <strong>Gender: </strong>
+                <span>{userData.gender}</span>
+            </div>
             <br/>
             <br/>
-            <strong>Mobile Number: </strong>
-            <span>{userData.mobile}</span>
+            <div className='container_item'>
+                <strong>Mobile Number: </strong>
+                <span>{userData.mobile}</span>
+            </div>
             <br/>
             
             <br/>
@@ -162,20 +168,26 @@ useEffect(()=>{
   {eth && <><label htmlFor="age">Name</label>
   <input type="text" onChange={handleInputChange} className="form-control" value={userData.name} name='name' placeholder="Enter Name"/></>}
   
-  <label htmlFor="age">Age</label>
+  
+  <div className='container_item'>
+    <label htmlFor="age">Age</label>
   <input type="number" onChange={handleInputChange} className="form-control" value={userData.age} name='age' placeholder="Enter Age"/>
+  </div>
 
-
+  <div className='container_item'>
   <label htmlFor="gender">Gender</label>
   <input name='gender' onChange={handleInputChange} type="text" value={userData.gender} className="form-control" placeholder="male/female"/>
+  </div>
 
 
+  <div className='container_item'>
   <label htmlFor="mobile">Mobile No</label>
   <input type="text" onChange={handleInputChange} className="form-control" value={userData.mobile} name='mobile' placeholder="XXXX XXXXXX"/>
+  </div>
 
 
-  <input type="submit" style={{display:'block', width:'100%'}}  className="btn btn-primary " value={userData.age||userData.mobile||userData.gender?'Edit':'AddData'}/>
-  <button type="button" style={{display:'block', width:'100%'}} className="btn btn-primary " onClick={onChange}>View</button>
+  <input type="submit" style={{display:'block', width:'100%'}}  className="btn btn-primary dashboardbtn" value={userData.age||userData.mobile||userData.gender?'Edit':'AddData'}/>
+  <button type="button" style={{display:'block', width:'100%'}} className="btn btn-primary dashboardbtn" onClick={onChange}>View</button>
 </form> 
     </div>}
 
